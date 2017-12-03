@@ -1,3 +1,24 @@
-<section class="login">
-  Teste Login
-</section>
+<div class="login">
+  <div class="box-login">
+    <form name="formLogin" ng-submit="login.login(formLogin)" novalidate>
+      <div class="row">
+        <div class="col-md-12 form-group" ng-class="{'has-error': login.hasError(formLogin, 'username')}">
+          <label class="control-label" for="username">Usuário</label>
+          <input name="username" id="username" ng-model="login.user.username" class="form-control" type="text" required>
+          <span class="text-danger small" ng-show="login.hasError(formLogin, 'username')">Este campo é obrigatório.</span>
+        </div>
+        <div class="col-md-12 form-group" ng-class="{'has-error': login.hasError(formLogin, 'password')}">
+          <label class="control-label" for="password">Senha</label>
+          <input name="password" id="password" ng-model="login.user.password" class="form-control" type="password" required>
+          <span class="text-danger small" ng-show="login.hasError(formLogin, 'password')">Este campo é obrigatório.</span>
+        </div>
+        <div class="col-md-12" ng-show="login.msgErrorServer">
+          <span class="text-danger" ng-bind-html="login.msgErrorServer"></span>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-large btn-block btn-success" type="submit">Entrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

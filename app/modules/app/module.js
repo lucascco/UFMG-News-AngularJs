@@ -5,6 +5,7 @@
 		.module('AngularJsNews', [
       'ngSanitize',
       'ui.router',
+			'ui.bootstrap',
 
       'AngularJsNews.app.controller',
       'AngularJsNews.app.routes',
@@ -14,5 +15,7 @@
 
       'AngularJsNews.login',
       'AngularJsNews.dash',
+
+      'AngularJsNews.server'
 		]);
 })();

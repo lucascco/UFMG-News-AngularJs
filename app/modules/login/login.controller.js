@@ -24,9 +24,11 @@
       if(formLogin.$invalid) {
         return;
       }
+      this.loading = true;
       LoginService.login(vm.user)
         .then(data => console.log('login controller', data))
-        .catch(error => handleError(error));
+        .catch(error => handleError(error))
+        .then(() => this.loading = false);
     }
 
     function hasError(formLogin, field) {
@@ -51,6 +53,7 @@
 		function activate() {
       vm.user = {};
       vm.msgErrorServer = '';
+      vm.loading = false;
 		}
 	}
 })();

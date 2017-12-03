@@ -1,5 +1,4 @@
 .login {
-  background-color: #8a8484;
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -11,5 +10,21 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 10px #41435d;
+  }
+
+  .box-login .errormsg {
+    min-height: 30px;
+    line-height: 1em;
+  }
+
+  .box-login .required-field {
+    min-height: 30px;
+    line-height: 1em;
+  }
+  .box-login > .logo {
+    img {
+      width: 100%;
+      height: 80px;
+    }
   }
 }

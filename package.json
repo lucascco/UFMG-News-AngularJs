@@ -42,5 +42,8 @@
         "single"
       ]
     }
+  },
+  "dependencies": {
+    "gulp-angular-templatecache": "^2.0.0"
   }
 }

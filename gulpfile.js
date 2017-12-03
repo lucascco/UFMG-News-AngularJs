@@ -26,6 +26,15 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('templateCache', () => {
+	return gulp.src('app/modules/**/*.html')
+		.pipe($.angularTemplatecache('templates.js',
+			{
+				module: 'AngularJsNews'
+			}))
+		.pipe(gulp.dest('app/scripts'));
+});
+
 gulp.task('scripts', () => {
   return gulp.src('app/scripts/**/*.js')
     .pipe($.plumber())
@@ -95,7 +104,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts', 'templateCache'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
@@ -147,6 +156,7 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
+  gulp.watch('app/modules/**/*.html', ['templateCache']);
 });
 
 // inject bower components
@@ -166,7 +176,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'templateCache'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

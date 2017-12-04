@@ -32,6 +32,12 @@
 					app: {
 						templateUrl: 'parts/internal.tpl.html'
 					}
+				},
+				resolve: {
+					auth: ['$state', 'LoginService', ($state, LoginService) => {
+            return LoginService.isLogged()
+              .catch(error => $state.go('app.external.login'));
+					}]
 				}
 			});
 

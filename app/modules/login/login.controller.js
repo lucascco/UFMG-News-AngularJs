@@ -5,10 +5,10 @@
 		.module('AngularJsNews.login.controller', [])
 		.controller('LoginController', LoginCtrl);
 
-    LoginCtrl.$inject = ['LoginService'];
+    LoginCtrl.$inject = ['LoginService', '$state'];
 
 	/* @ngInject */
-	function LoginCtrl(LoginService) {
+	function LoginCtrl(LoginService, $state) {
 		var vm = this;
 
     vm.login = login;
@@ -26,10 +26,15 @@
       }
       this.loading = true;
       LoginService.login(vm.user)
-        .then(data => console.log('login controller', data))
+        .then(() => loginSuccess())
         .catch(error => handleError(error))
         .then(() => this.loading = false);
     }
+
+    function loginSuccess() {
+      $state.go('app.internal.dash');
+    }
+
 
     function hasError(formLogin, field) {
       return (formLogin.$submsgErrorServermitted || formLogin[field].$touched) && formLogin[field].$error.required;

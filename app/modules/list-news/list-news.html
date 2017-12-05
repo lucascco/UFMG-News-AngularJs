@@ -19,13 +19,13 @@
       <p class="interval">De 1 até {{listNews.totPage}}</p>
       <div class="input-group">
         <span class="input-group-btn">
-          <button ng-click="listNews.prev()" class="btn btn-default" type="button">
+          <button ng-disabled="listNews.processing" ng-click="listNews.prev()" class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           </button>
         </span>
-        <input type="text" ng-change="listNews.changePage()"  ng-model-options="{ debounce: 500 }" ng-model="listNews.listNews.page" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <input ng-disabled="listNews.processing" type="text" ng-change="listNews.changePage()"  ng-model-options="{ debounce: 500 }" ng-model="listNews.listNews.page" class="form-control" aria-label="Amount (to the nearest dollar)">
         <span class="input-group-btn">
-          <button ng-click="listNews.next()" class="btn btn-default" type="button">
+          <button ng-disabled="listNews.processing" ng-click="listNews.next()" class="btn btn-default" type="button">
               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           </button>
         </span>

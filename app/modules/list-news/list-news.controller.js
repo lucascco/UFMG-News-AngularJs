@@ -44,12 +44,14 @@
     }
 
     function list() {
+      vm.processing = true;
       ListNewsService.list(vm.filter)
         .then(response => {
           vm.listNews = response.data;
           calcTotPage();
         })
-        .catch(error => console.error('list news', error));
+        .catch(error => console.error('list news', error))
+        .then(() => vm.processing = false);
 
     }
 
@@ -74,6 +76,7 @@
     }
 
 		function activate() {
+      vm.processing = false;
       iniFilter();
       initList();
       list();

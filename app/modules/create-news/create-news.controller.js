@@ -47,7 +47,7 @@
       ListNewsService.postNews(vm.news)
       .then(response => {
         console.log(response);
-        toast.pop('success', 'Cadastrado!', 'Notícia cadastrada com sucesso.')
+        toast.pop('success', 'Cadastrado!', 'Notícia cadastrada com sucesso.');
       })
       .catch(error => handleErrorSave(error))
       .then(() => vm.processing = false);

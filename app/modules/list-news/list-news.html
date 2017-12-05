@@ -11,7 +11,7 @@
       <tr ng-repeat="news in listNews.listNews.items">
         <td>{{news.id}}</td>
         <td>{{news.title}}</td>
-        <td>{{news.post_date}}</td>
+        <td>{{news.post_date | date : 'dd/MM/yyyy'}}</td>
         <td><button ui-sref="app.internal.editNews({id: news.id})" class="btn btn-primary">Editar</button></td>
       </tr>
      </table>

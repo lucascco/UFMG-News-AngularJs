@@ -51,8 +51,17 @@
 
     function getNews() {
       ListNewsService.news(vm.idNews)
-        .then(response => vm.news = response.data)
+        .then(response => {
+          vm.news = response.data;
+          buildTags();
+        })
         .catch(error => handleErrorGet(error));
+    }
+
+    function buildTags() {
+      if(vm.news.tags && vm.news.tags.length) {
+        vm.news.tags = vm.news.tags.map(tags => tags.name).join(', ');
+      }
     }
 
     function initNews() {
@@ -65,6 +74,7 @@
     }
 
     function handleErrorGet(error) {
+      console.error(error);
       toaster.pop('error', 'Ops, houve um error', 'Desculpe, não conseguimos recuperar essa notícia.');
     }
 

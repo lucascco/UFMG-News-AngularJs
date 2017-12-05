@@ -17,6 +17,7 @@
 
 
 		function activate() {
+      vm.idNews = $stateParams.id;
       console.log('teste', $stateParams.id);
 		}
 	}

@@ -1,0 +1,21 @@
+.list-news {
+  .pages {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pages > .interval {
+    font-weight: bold;
+  }
+  .pages > .instructions {
+    margin-top: 5px;
+    font-style: italic;
+  }
+  .input-group {
+    align-self: center;
+    width: 160px;
+    input {
+      text-align: center;
+    }
+  }
+}

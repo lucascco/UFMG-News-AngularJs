@@ -21,7 +21,6 @@
     ////////////////
     function getUserLogged() {
       let user = getToken().user;
-      console.log(user);
       return user;
     }
 

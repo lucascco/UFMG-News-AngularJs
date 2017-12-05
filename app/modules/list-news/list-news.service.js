@@ -15,7 +15,7 @@
     return service;
 
     function list(filter) {
-      ServerService.get(ListNewsEndpoints.list(), filter);
+      return ServerService.get(ListNewsEndpoints.list(), filter);
     }
 
     ////////////////

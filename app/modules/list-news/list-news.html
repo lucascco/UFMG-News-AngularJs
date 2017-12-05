@@ -1,4 +1,4 @@
-<div class="dash">
+<div class="list-news">
   <div class="panel panel-default">
     <div class="panel-heading">Listagem das Noticias</div>
     <table class="table table-striped">
@@ -8,39 +8,29 @@
         <th>Data de Postagem</th>
         <th>Ações</th>
       </thead>
-      <tr>
-        <td>1</td>
-        <td>Teste</td>
-        <td>12/20/2016</td>
-        <td><button class="btn btn-primary">Editar</button></td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Teste</td>
-        <td>12/20/2016</td>
+      <tr ng-repeat="news in listNews.listNews.items">
+        <td>{{news.id}}</td>
+        <td>{{news.title}}</td>
+        <td>{{news.post_date}}</td>
         <td><button class="btn btn-primary">Editar</button></td>
       </tr>
      </table>
      <div class="pages text-center">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+      <p class="interval">De 1 até {{listNews.totPage}}</p>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button ng-click="listNews.prev()" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          </button>
+        </span>
+        <input type="text" ng-change="listNews.changePage()"  ng-model-options="{ debounce: 500 }" ng-model="listNews.listNews.page" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <span class="input-group-btn">
+          <button ng-click="listNews.next()" class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div>
+      <small class="instructions">Navegue pelos botões ou insira o número de uma pagina</small>
      </div>
   </div>
 </div>

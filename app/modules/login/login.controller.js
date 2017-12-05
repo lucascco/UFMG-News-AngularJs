@@ -37,7 +37,7 @@
 
 
     function hasError(formLogin, field) {
-      return (formLogin.$submsgErrorServermitted || formLogin[field].$touched) && formLogin[field].$error.required;
+      return (formLogin.$submitted || formLogin[field].$touched) && formLogin[field].$error.required;
     }
 
     function handleError(error) {

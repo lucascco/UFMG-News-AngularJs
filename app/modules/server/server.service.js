@@ -5,10 +5,10 @@
 		.module('AngularJsNews.server.service', [])
 		.service('ServerService', ServerService);
 
-	ServerService.$inject = ['$http', '$q', '$httpParamSerializerJQLike', '$log'];
+	ServerService.$inject = ['$http', '$q', '$httpParamSerializerJQLike', '$log', '$state'];
 
 	/* @ngInject */
-	function ServerService($http, $q, $httpParamSerializerJQLike, $log) {
+	function ServerService($http, $q, $httpParamSerializerJQLike, $log, $state) {
 
 		this.get = get;
 		this.post = post;
@@ -29,24 +29,18 @@
 
 		function get(url, params) {
       url = buildParams(url, params);
-  		return $http.get(url);
+      return $http.get(url);
 		}
 
     function post(url, data) {
+      console.log(url, data);
       let headers = {'Content-Type': 'application/x-www-form-urlencoded'};
       return $http({ method: 'POST', url, headers, transformRequest: transformRequest, data });
     }
 
 		function put(url, params, body) {
-			var defer = $q.defer();
 			url = buildParams(url, params);
-			$http.put(url, body).success(function (data) {
-				defer.resolve(data);
-			}).error(function (err) {
-				$log.error(err);
-				defer.reject(err);
-			});
-			return defer.promise;
+			return $http.put(url, body);
     }
 
     function transformRequest(obj) {

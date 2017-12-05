@@ -73,9 +73,17 @@
     function isLogged() {
       let defer = $q.defer();
       let token = getToken();
-      if(token && token.access_token) {
-        setAuthorization(token);
-        defer.resolve(token);
+      if(token && token.access_token && token.expires_in) {
+        let todayExpire = new Date();
+        let now = new Date();
+        todayExpire.setSeconds(todayExpire.getSeconds() + token.expires_in);
+        if(todayExpire < now) {
+          this.logout();
+          defer.reject('noToken')
+        } else {
+          setAuthorization(token);
+          defer.resolve(token);
+        }
       } else {
         defer.reject('noToken');
       }

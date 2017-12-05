@@ -3,27 +3,27 @@
     <div class="panel-heading">{{createNews.idNews ? 'Edição' : 'Criação'}} de Noticias</div>
   </div>
   <div class="panel-body">
-    <form novalidate>
-        <div class="form-group">
-          <label for="title">Título</label>
-          <input type="text" class="form-control" id="title" placeholder="Título">
+    <form name="formNews" ng-submit="createNews.submit(formNews)" novalidate>
+        <div class="form-group" ng-class="{'has-error': createNews.hasError(formNews, 'title')}">
+          <label class="control-label" for="title">Título</label>
+          <input name="title" ng-model="createNews.news.title" type="text" class="form-control" id="title" placeholder="Título" required>
+        </div>
+        <div class="form-group" ng-class="{'has-error': createNews.hasError(formNews, 'subtitle')}">
+          <label class="control-label" for="subtitle">Subtitulo</label>
+          <input name="subtitle" ng-model="createNews.news.subtitle" type="text" class="form-control" id="subtitle" placeholder="Subtitulo" required>
+        </div>
+        <div class="form-group" ng-class="{'has-error': createNews.hasError(formNews, 'text')}">
+          <label class="control-label" for="txt">Texto</label>
+          <textarea name="text" ng-model="createNews.news.text" type="text" class="form-control" id="txt" placeholder="Texto"  rows="4" required></textarea>
         </div>
         <div class="form-group">
-          <label for="subtitle">Subtitulo</label>
-          <input type="text" class="form-control" id="subtitle" placeholder="Subtitulo">
-        </div>
-        <div class="form-group">
-          <label for="txt">Texto</label>
-          <textarea type="text" class="form-control" id="txt" placeholder="Texto"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="tags">Tags</label>
-          <input type="text" class="form-control" id="tags" placeholder="Tags">
+          <label class="control-label" for="tags">Tags (separado por virgular)</label>
+          <input name="tags" ng-model="createNews.news.tags" type="text" class="form-control" id="tags" placeholder="Tags">
         </div>
         <button type="submit" class="btn btn-success">
           {{createNews.idNews ? 'Editar' : 'Cadastrar'}}
         </button>
-        <button type="submit" class="btn btn-primary">
+        <button type="button" class="btn btn-primary">
           Cancelar
         </button>
     </form>

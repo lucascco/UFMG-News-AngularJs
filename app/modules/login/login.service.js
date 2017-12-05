@@ -11,7 +11,8 @@
 	function LoginService(LoginEndpoints, ServerService, $window, KEY_STORAGE, $http, $q) {
 		let service = {
       login: login,
-      isLogged: isLogged
+      isLogged: isLogged,
+      logout: logout,
 		};
 		return service;
 
@@ -24,17 +25,31 @@
         .then(token => loginSuccess(token.data));
     }
 
+    function logout() {
+      removeAuthorization();
+      removeToken();
+    }
+
     function loginSuccess(token) {
-      saveUserData(token);
+      saveToken(token);
       setAuthorization(token)
       return token;
+    }
+
+    function removeAuthorization() {
+      delete $http.defaults.headers.common.Authorization;
+    }
+
+    function removeToken() {
+      delete $http.defaults.headers.common.Authorization;
+      $window.localStorage.removeItem(KEY_STORAGE);
     }
 
     function setAuthorization(token) {
       $http.defaults.headers.common.Authorization = `${token.type} ${token.access_token}`;
     }
 
-    function saveUserData(token) {
+    function saveToken(token) {
       $window.localStorage.setItem(KEY_STORAGE, angular.toJson(token));
     }
 

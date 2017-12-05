@@ -41,6 +41,6 @@
 				}
 			});
 
-			$urlRouterProvider.otherwise('app/login');
+			$urlRouterProvider.otherwise('app/dash');
 		}
 })();

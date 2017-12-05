@@ -1,3 +1,48 @@
 .header {
   height: 50px;
+  background-color:	#C8102E;
+  border-bottom: 1px solid #000;
+  color: #fff;
+  .link {
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .logo {
+    img {
+      width: 90px;
+      height: 50px;
+      filter: brightness(0) invert(1);
+    }
+  }
+  .menu {
+    .list {
+      .item-menu {
+        display: inline-block;
+        padding: 15px;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .user-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    .user {
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
+      .email {
+        font-style: italic;
+        color: lighten(#000, 90%);
+      }
+    }
+    .logoff {
+      align-self: center;
+      padding: 5px;
+    }
+  }
 }

@@ -15,6 +15,7 @@
 
       'AngularJsNews.login',
       'AngularJsNews.list-news',
+      'AngularJsNews.create-news',
 
       'AngularJsNews.server'
 		]);

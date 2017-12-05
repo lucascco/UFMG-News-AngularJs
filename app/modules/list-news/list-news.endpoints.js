@@ -10,10 +10,14 @@
 	/* @ngInject */
 	function ListNewsEndpoints(API_URL) {
 		var service = {
+      list: list
 		};
 		return service;
 
 		////////////////
 
+		function list() {
+			return API_URL + '/news';
+    }
 	}
 })();

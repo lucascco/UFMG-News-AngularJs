@@ -28,6 +28,7 @@
 		////////////////
 
 		function get(url, params) {
+      url = buildParams(url, params);
   		return $http.get(url);
 		}
 

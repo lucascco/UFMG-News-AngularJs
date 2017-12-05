@@ -5,14 +5,18 @@
 		.module('AngularJsNews.list-news.service', [])
 		.factory('ListNewsService', ListNewsService);
 
-    ListNewsService.$inject = [];
+    ListNewsService.$inject = ['ListNewsEndpoints', 'ServerService'];
 
 	/* @ngInject */
-	function ListNewsService() {
+	function ListNewsService(ListNewsEndpoints,  ServerService) {
 		let service = {
-
+      list: list
 		};
-		return service;
+    return service;
+
+    function list(filter) {
+      ServerService.get(ListNewsEndpoints.list(), filter);
+    }
 
     ////////////////
 

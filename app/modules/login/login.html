@@ -24,7 +24,7 @@
           <p class="text-danger" ng-show="login.msgErrorServer" ng-bind-html="login.msgErrorServer"></p>
         </div>
         <div class="col-md-12">
-          <button class="btn btn-large btn-block btn-success" type="submit">
+          <button ng-disabled="login.loading" class="btn btn-large btn-block btn-success" type="submit">
             {{ login.loading ? 'Verificando ...' : 'Entrar' }}
           </button>
         </div>

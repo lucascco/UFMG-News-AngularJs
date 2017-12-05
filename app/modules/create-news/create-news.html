@@ -20,10 +20,11 @@
           <label class="control-label" for="tags">Tags (separado por virgula)</label>
           <input name="tags" ng-model="createNews.news.tags" type="text" class="form-control" id="tags" placeholder="Tags">
         </div>
-        <button type="submit" class="btn btn-success">
-          {{createNews.idNews ? 'Editar' : 'Cadastrar'}}
+        <button  ng-disabled="createNews.processing" type="submit" class="btn btn-success">
+          {{createNews.idNews ? createNews.processing ? 'Editando' : 'Editar'
+            : createNews.processing ? 'Cadastrando' : 'Cadastrar'}}
         </button>
-        <button ui-sref="app.internal.listNews" type="button" class="btn btn-primary">
+        <button  ng-disabled="createNews.processing" ui-sref="app.internal.listNews" type="button" class="btn btn-primary">
           Cancelar
         </button>
     </form>

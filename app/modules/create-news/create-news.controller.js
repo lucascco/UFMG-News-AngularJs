@@ -35,18 +35,22 @@
     }
 
     function update() {
+      vm.processing = true
       ListNewsService.updateNews(vm.idNews, vm.news)
         .then(() => toast.pop('success', 'Atualizado!', 'Notícia atualizada com sucesso.'))
-        .catch(error => handleErrorSave(error));
+        .catch(error => handleErrorSave(error))
+        .then(() => vm.processing = false);
     }
 
     function save() {
+      vm.processing = true
       ListNewsService.postNews(vm.news)
       .then(response => {
         console.log(response);
         toast.pop('success', 'Cadastrado!', 'Notícia cadastrada com sucesso.')
       })
-      .catch(error => handleErrorSave(error));
+      .catch(error => handleErrorSave(error))
+      .then(() => vm.processing = false);
     }
 
     function getNews() {
@@ -83,8 +87,8 @@
     }
 
 		function activate() {
-      console.log('teste', $stateParams.id);
       initNews();
+      vm.processing = false;
       vm.idNews = $stateParams.id;
       if (vm.idNews) {
         getNews();

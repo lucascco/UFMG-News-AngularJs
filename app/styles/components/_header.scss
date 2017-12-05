@@ -1,6 +1,9 @@
+$color-ufmg: #C8102E;
 .header {
-  height: 50px;
-  background-color:	#C8102E;
+  height: 80px;
+  padding: 5px;
+  position: relative;
+  background-color:	$color-ufmg;
   border-bottom: 1px solid #000;
   color: #fff;
   .link {
@@ -21,28 +24,22 @@
     .list {
       .item-menu {
         display: inline-block;
-        padding: 15px;
+        padding: 5px;
+        margin: 5px;
         text-transform: uppercase;
+        &.active {
+          border-bottom: 2px solid #fff;
+        }
       }
     }
   }
   .user-area {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-content: center;
-    .user {
-      display: flex;
-      flex-direction: column;
-      padding: 5px;
-      .email {
-        font-style: italic;
-        color: lighten(#000, 90%);
-      }
+    text-align: center;
+    .user > .email {
+      font-style: italic;
     }
-    .logoff {
-      align-self: center;
-      padding: 5px;
+    .user > .name {
+      font-weight: bold;
     }
   }
 }

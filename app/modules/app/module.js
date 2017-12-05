@@ -14,7 +14,7 @@
       'AngularJsNews.app.constants',
 
       'AngularJsNews.login',
-      'AngularJsNews.dash',
+      'AngularJsNews.list-news',
 
       'AngularJsNews.server'
 		]);

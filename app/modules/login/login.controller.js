@@ -32,7 +32,7 @@
     }
 
     function loginSuccess() {
-      $state.go('app.internal.dash');
+      $state.go('app.internal.listNews');
     }
 
 

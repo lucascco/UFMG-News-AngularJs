@@ -11,19 +11,24 @@
 	function AppController(LoginService, $state) {
 		var vm = this;
 
-		vm.logout = logout;
+    vm.logout = logout;
+    vm.getUserLogged = getUserLogged;
+
 
 		activate();
 
 		////////////////
 
 		function logout() {
-      console.log('logout');
       LoginService.logout();
       $state.go('app.external.login');
-		}
+    }
+
+    function getUserLogged() {
+      return LoginService.getUserLogged();
+    }
 
 		function activate() {
-		}
+    }
 	}
 })();

@@ -13,10 +13,17 @@
       login: login,
       isLogged: isLogged,
       logout: logout,
+      account: account,
+      getUserLogged: getUserLogged,
 		};
 		return service;
 
-		////////////////
+    ////////////////
+    function getUserLogged() {
+      let user = getToken().user;
+      console.log(user);
+      return user;
+    }
 
     function login(credentials) {
       credentials.grant_type = 'password';
@@ -30,10 +37,14 @@
       removeToken();
     }
 
+    function account() {
+      return ServerService.get(LoginEndpoints.account());
+    }
+
     function loginSuccess(token) {
-      saveToken(token);
       setAuthorization(token)
-      return token;
+      return account()
+        .then(acc => saveToken(token, acc.data));
     }
 
     function removeAuthorization() {
@@ -46,11 +57,13 @@
     }
 
     function setAuthorization(token) {
-      $http.defaults.headers.common.Authorization = `${token.type} ${token.access_token}`;
+      $http.defaults.headers.common.Authorization = `${token.token_type} ${token.access_token}`;
     }
 
-    function saveToken(token) {
+    function saveToken(token, accountUser) {
+      token.user = accountUser;
       $window.localStorage.setItem(KEY_STORAGE, angular.toJson(token));
+      return token;
     }
 
     function getToken() {
@@ -61,8 +74,8 @@
     function isLogged() {
       let defer = $q.defer();
       let token = getToken();
-      console.log('isLogged', defer, token);
       if(token && token.access_token) {
+        setAuthorization(token);
         defer.resolve(token);
       } else {
         defer.reject('noToken');

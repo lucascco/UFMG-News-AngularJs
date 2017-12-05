@@ -1,22 +1,23 @@
 <div class="header">
   <div class="row">
-    <div class="logo col-md-2 col-xs-2">
+
+    <div class="logo col-md-2 col-xs-1">
       <img src="images/logo_ufmg.png" alt="">
     </div>
-    <div class="menu col-md-6 col-xs-6">
+    <div class="menu col-md-8 col-xs-9">
       <ul class="list">
-        <li class="item-menu">
-          <a class="link">Notícias</a>
+        <li ui-sref-active="active" class="item-menu">
+          <a ui-sref="app.internal.listNews" class="link">Notícias</a>
         </li>
-        <li class="item-menu">
+        <li ui-sref-active="active" class="item-menu">
           <a class="link">Criar Notícias</a>
         </li>
       </ul>
     </div>
-    <div class="user-area col-md-4 col-xs-4">
+    <div class="user-area text-nowrap col-md-2 col-xs-2">
       <div class="user">
-        <b class="name">Lucas</b>
-        <small class="email">lucas@portal.com</small>
+        <div class="name">{{ app.getUserLogged().name }}</div>
+        <small class="email">{{ app.getUserLogged().email }}</small>
       </div>
       <a class="logoff link" ng-click="app.logout()">
         <span class="glyphicon glyphicon-log-out"></span>
@@ -24,5 +25,4 @@
       </a>
     </div>
   </div>
-
 </div>

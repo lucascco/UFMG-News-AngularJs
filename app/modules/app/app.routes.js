@@ -41,6 +41,6 @@
 				}
 			});
 
-			$urlRouterProvider.otherwise('app/dash');
+			$urlRouterProvider.otherwise('app/list-news');
 		}
 })();

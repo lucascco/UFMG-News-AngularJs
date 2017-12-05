@@ -28,15 +28,7 @@
 		////////////////
 
 		function get(url, params) {
-			var defer = $q.defer();
-			url = buildParams(url, params);
-			$http.get(url).success(function (data) {
-				defer.resolve(data);
-			}).error(function (err) {
-				$log.error(err);
-				defer.reject(err);
-			});
-			return defer.promise;
+  		return $http.get(url);
 		}
 
     function post(url, data) {

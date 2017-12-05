@@ -10,7 +10,8 @@
 	/* @ngInject */
 	function LoginEndpoints(API_URL) {
 		var service = {
-      authenticate: authenticate
+      authenticate: authenticate,
+      account: account,
 		};
 		return service;
 
@@ -18,6 +19,10 @@
 
 		function authenticate() {
 			return API_URL + '/authenticate';
+    }
+
+		function account() {
+			return API_URL + '/account';
 		}
 	}
 })();

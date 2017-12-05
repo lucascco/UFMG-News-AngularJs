@@ -5,7 +5,8 @@
 		.module('AngularJsNews', [
       'ngSanitize',
       'ui.router',
-			'ui.bootstrap',
+      'ui.bootstrap',
+      'toaster',
 
       'AngularJsNews.app.controller',
       'AngularJsNews.app.routes',

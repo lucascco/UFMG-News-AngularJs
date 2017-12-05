@@ -6,7 +6,8 @@
     "angular-ui-router": "^1.0.11",
     "angular-sanitize": "^1.6.7",
     "angular-bootstrap": "^2.5.0",
-    "bootstrap": "3.3.7"
+    "bootstrap": "3.3.7",
+    "AngularJS-Toaster": "angularjs-toaster#^2.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

@@ -5,10 +5,10 @@
 		.module('AngularJsNews.create-news.controller', [])
 		.controller('NewsCreateController', NewsCreateController);
 
-    NewsCreateController.$inject = ['ListNewsService', '$stateParams'];
+    NewsCreateController.$inject = ['ListNewsService', '$stateParams', 'toaster'];
 
 	/* @ngInject */
-	function NewsCreateController(ListNewsService, $stateParams) {
+	function NewsCreateController(ListNewsService, $stateParams, toaster) {
     let vm = this;
 
     vm.submit = submit;
@@ -20,6 +20,7 @@
 
     function submit(form) {
       if(form.$invalid) {
+        toaster.pop('warning', 'Atenção', 'Atenção aos campos em vermelho, eles são obrigatórios.');
         return;
       }
       if (vm.idNews) {
@@ -35,20 +36,23 @@
 
     function update() {
       ListNewsService.updateNews(vm.idNews, vm.news)
-        .then(() => console.log('update success'))
-        .catch(error => console.error('update error', error));
+        .then(() => toast.pop('success', 'Atualizado!', 'Notícia atualizada com sucesso.'))
+        .catch(error => handleErrorSave(error));
     }
 
     function save() {
       ListNewsService.postNews(vm.news)
-      .then(() => console.log('postNews success'))
-      .catch(error => console.error('postNews error', error));
+      .then(response => {
+        console.log(response);
+        toast.pop('success', 'Cadastrado!', 'Notícia cadastrada com sucesso.')
+      })
+      .catch(error => handleErrorSave(error));
     }
 
     function getNews() {
       ListNewsService.news(vm.idNews)
         .then(response => vm.news = response.data)
-        .catch(error => console.error(error));
+        .catch(error => handleErrorGet(error));
     }
 
     function initNews() {
@@ -58,9 +62,15 @@
         text: '',
         tags: ''
       };
-
     }
 
+    function handleErrorGet(error) {
+      toaster.pop('error', 'Ops, houve um error', 'Desculpe, não conseguimos recuperar essa notícia.');
+    }
+
+    function handleErrorSave(error) {
+      toaster.pop('error', 'Ops, houve um error', 'Desculpe, não conseguimos enviar os dados.');
+    }
 
 		function activate() {
       console.log('teste', $stateParams.id);

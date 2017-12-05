@@ -5,10 +5,10 @@
 		.module('AngularJsNews.login.controller', [])
 		.controller('LoginController', LoginCtrl);
 
-    LoginCtrl.$inject = ['LoginService', '$state'];
+    LoginCtrl.$inject = ['LoginService', '$state', 'toaster'];
 
 	/* @ngInject */
-	function LoginCtrl(LoginService, $state) {
+	function LoginCtrl(LoginService, $state, toaster) {
 		var vm = this;
 
     vm.login = login;
@@ -44,9 +44,11 @@
       console.error(error);
       switch(error.status) {
         case 401:
+          toaster.pop('warning', 'Senha Incorreta', 'Ops, Parece que a senha esta incorreta.')
           vm.msgErrorServer = 'A combinação de senha e usuário está incorreta. =(';
           break;
         default:
+          toaster.pop('error', 'Desculpe', 'Um erro ocorreu ao tentar fazer o login. Tente novamente ou entre em contato.');
           vm.msgErrorServer = 'Houve um error ao tentar comunicar com o servidor. =(';
       }
     }

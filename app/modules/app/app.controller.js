@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function AppController(LoginService, $state) {
-		var vm = this;
+		let vm = this;
 
     vm.logout = logout;
     vm.getUserLogged = getUserLogged;

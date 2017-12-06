@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function LoginCtrl(LoginService, $state, toaster) {
-		var vm = this;
+		let vm = this;
 
     vm.login = login;
     vm.hasError = hasError;

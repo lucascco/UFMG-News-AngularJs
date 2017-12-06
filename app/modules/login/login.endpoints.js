@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function LoginEndpoints(API_URL) {
-		var service = {
+		let service = {
       authenticate: authenticate,
       account: account,
 		};

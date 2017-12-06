@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function ListNewsController(ListNewsService) {
-    var vm = this;
+    let vm = this;
 
     vm.next = next;
     vm.prev = prev;

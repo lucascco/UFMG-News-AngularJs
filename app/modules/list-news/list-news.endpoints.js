@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function ListNewsEndpoints(API_URL) {
-		var service = {
+		let service = {
       list: list,
       news: news
 		};
